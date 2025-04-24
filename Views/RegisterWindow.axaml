@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Library.RegisterWindow"
+        Title="Sign up"
+		Icon="/Assets/books.ico">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<StackPanel Margin="10">
+			<TextBlock Text="Username:" Margin="0 0 0 10"/>
+			<TextBox x:Name="UsernameTextBox" Margin="0 0 0 10"/>
+
+			<TextBlock Text="Password:" Margin="0 0 0 10"/>
+			<TextBox x:Name="PasswordBox1" PasswordChar="*" MaxLength="0" Margin="0 0 0 10"/>
+
+			<TextBlock Text="Confirm Password:" Margin="0 0 0 10"/>
+			<TextBox x:Name="PasswordBox2" PasswordChar="*" MaxLength="0" Margin="0 0 0 10"/>
+
+			<TextBlock Text="Email:" Margin="0 0 0 10"/>
+			<TextBox x:Name="EmailTextBox" Margin="0 0 0 10"/>
+
+			<TextBlock Text="Phone Number:" Margin="0 0 0 10"/>
+			<TextBox x:Name="PhoneNumberTextBox" Margin="0 0 0 10"/>
+
+			<Button Content="Sign up" x:Name="RegisterButton" IsEnabled="False" Click="Register_Click" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Padding="10" Width="250" Margin="0 10 0 0"/>
+		</StackPanel>
+
+
+	</Grid>
+</Window>

@@ -1,0 +1,75 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Library.BookWindow"
+        Title="Books in Library"
+        x:DataType="local:BookWindow"
+        Icon="/Assets/books.ico">
+
+
+	<Grid Margin="20">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="0" HorizontalScrollBarVisibility="Disabled">
+			<StackPanel Margin="10">
+				<TextBlock>Available Books:</TextBlock>
+				<ListBox x:Name="AvailableBooksListBox" Margin="0 5" ItemsSource="{Binding AvailableBooks}">
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<StackPanel Height="200">
+								<TextBlock Margin="0 5" Text="{Binding Title, StringFormat='Title: {0}'}"/>
+								<TextBlock Margin="0 5" Text="{Binding Author, StringFormat='Author: {0}'}"/>
+								<TextBlock Margin="0 5" Text="{Binding Category.Name, StringFormat='Category: {0}'}"/>
+								<Button x:Name="AddBookButton" Content="Check out new book" Margin="0 5" Click="AddBookButton_Click"/>
+							</StackPanel>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+			</StackPanel>
+		</ScrollViewer>
+		<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" HorizontalScrollBarVisibility="Disabled">
+			<StackPanel Margin="10" x:Name="UserBooksStackPanel">
+				<TextBlock >User's Books:</TextBlock>
+				<ListBox x:Name="UserBooksListBox" Margin="0 5" ItemsSource="{Binding UserBooks}">
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<StackPanel Height="200">
+								<TextBlock Margin="0 5" Text="{Binding Title, StringFormat='Title: {0}'}"/>
+								<TextBlock Margin="0 5" Text="{Binding Author, StringFormat='Author: {0}'}"/>
+								<TextBlock Margin="0 5" Text="{Binding Category.Name, StringFormat='Category: {0}'}"/>
+								<ListBox ItemsSource="{Binding CheckOuts}" Margin="0">
+									<ListBox.ItemTemplate>
+										<DataTemplate>
+											<StackPanel>
+												<TextBlock Text="{Binding CheckOutDate, StringFormat='Check out date: {0:d}'}"/>
+												<TextBlock Text="{Binding DueDate, StringFormat='Due date: {0:d}'}"/>
+												<TextBlock Text="{Binding DaysDifference, StringFormat='Days left: {0}'}"/>
+												<TextBlock Text="{Binding Penalty, StringFormat='Penalty: {0} zł'}"/>
+											</StackPanel>
+										</DataTemplate>
+									</ListBox.ItemTemplate>
+								</ListBox>
+							</StackPanel>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+			</StackPanel>
+		</ScrollViewer>
+			<StackPanel Grid.Column="2" Margin="10">
+				<TextBlock>Search:</TextBlock>
+				<TextBox x:Name="SearchUserTextBox" Margin="0 5" Watermark="Search..." KeyUp="SearchBooksTextBox_KeyUp"/>
+				<ComboBox x:Name="SortOptionComboBox" Margin="0 5" SelectionChanged="SortOptionComboBox_SelectionChanged"/>
+				<ComboBox x:Name="SortMethodComboBox" Margin="0 5" SelectionChanged="SortOptionComboBox_SelectionChanged"/>
+				<Button x:Name="SettingsButton" Content="Settings" Margin="0 5" Click="SettingsButton_Click"/>
+				<Button x:Name="LogoutButton" Content="Logout" Margin="0 5" Click="LogoutButton_Click"/>
+			</StackPanel>
+			
+		</Grid>
+	
+</Window>
